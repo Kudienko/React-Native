@@ -10,16 +10,26 @@ export default function HelloWorld() {
     let [c, setC] = useState('')
     const [showAlert, setAlert] = useState()
     const hideAlert = () => setAlert(false)
-    let [txt, setTxt] = useState()
-    let error;
+    let [txt, setTxt] = useState('')
+    let [error, setError] = useState('')
 
     const handlePress = () => {
-        if (a !== '' && b !== '' && c !== '') {
-            setAlert(true)
-            setTxt(quadraticEquation(a, b, c))
-        } else error = 'Заполните поля'
+
+
+        if (a === '' || b === '' || c === '') {
+            setError ('Заполните все поля')
+        } else {
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                setError ('Введите числа')
+            } else {
+                setAlert(true)
+                setTxt(quadraticEquation(a, b, c))
+                setError('')
+            }
+        }
 
     }
+
 
 
     let quadraticEquation = (a, b, c) => {
@@ -31,13 +41,14 @@ export default function HelloWorld() {
         let D = b * b - 4 * a * c;
         console.log('D = ' + D);
 
+
         if (D < 0) {
             disText = 'Дискриминант меньше нуля: \nОтвет: Корней нет'
         }
         if (D === 0) {
             let x;
             x = (-b + Math.sqrt(D)) / (2 * a);
-            disText = `Дискриминант равен нулю: \n x\u2081 = x\u2082 = -b / 2a = ${b * -1} / 2 * ${a}\nОтвет: x\u2081 = x\u2081 = ${x}`
+            disText = `Дискриминант равен нулю: \n x\u2081 = x\u2082 = -b / 2a = ${b * -1} / 2 * ${a} = ${x}\nОтвет: x\u2081 = x\u2081 = ${x}`
         } else if (D > 0) {
             let x1;
             let x2;
@@ -49,6 +60,17 @@ export default function HelloWorld() {
         if ( a === 0 && b === 0 && c === 0){
             res = 'При любых x уравнение является верным'
         }
+        if (a === '0'){
+            let x;
+            x = (-c/b)
+            res = `Данное уравнение является линейным:\nx = -c / b = ${c*-1} / ${b} = ${x}\nОтвет: x = ${x} `
+        }
+        if (a === '0' && b === '0') {
+            res = 'Ответ: x \u2208 \u29B0'
+        }
+        if (a === '0' && b === '0' && c === '0') {
+            res = 'Ответ: x \u2208 \u0052'
+        }
         return res
     }
 
@@ -58,11 +80,11 @@ export default function HelloWorld() {
                 <Text style={styles.txt}>Решение квадратных уравнений</Text>
             </View>
             <View style={styles.vod}>
-                <Text>{error}</Text>
+                <Text style={styles.error}>{error}</Text>
                 <Formik initialValues={{text: '', discript: ''}} onSubmit={(values) => {
                     if (values.text !== '') {
                         handlePress(values)
-                    } else error = 'Заполните поля'
+                    }
                 }}>
                     {(props) => (
                         <View style={styles.container}>
@@ -136,5 +158,9 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+    },
+    error: {
+        fontSize: 15,
+        color: 'red'
     }
 });
