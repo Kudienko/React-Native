@@ -15,7 +15,7 @@ export default function MainMenu() {
             <TouchableOpacity onPress={() => navigation.navigate('QuadraticEquation')}>
                 <Text style={styles.text}>Lab-2</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Screen2')}>
+            <TouchableOpacity onPress={() => navigation.navigate('MainCalculator')}>
                 <Text style={styles.text}>Lab-3</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('WishList')}>

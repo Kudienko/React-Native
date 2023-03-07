@@ -2,13 +2,12 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import {StatusBar} from "expo-status-bar";
 import MainMenu from "./MainMenu";
-import Screen2 from "./screens/Screen2";
-import lab1 from "./lab1/HelloWorld";
 import WishList from "./lab4/WishList";
 import AddScreen from "./lab4/screens/AddScreen";
 import WishScreen from "./lab4/screens/WishScreen";
 import HelloWorld from "./lab1/HelloWorld";
 import QuadraticEquation from "./lab2/QuadraticEquation";
+import MainCalculator from "./lab3/MainCalculator";
 
 export default function App() {
     const Stack = createNativeStackNavigator();
@@ -22,6 +21,7 @@ export default function App() {
                 <Stack.Screen name="WishList" component={WishList}></Stack.Screen>
                 <Stack.Screen name="AddScreen" component={AddScreen}></Stack.Screen>
                 <Stack.Screen name="WishScreen" component={WishScreen}></Stack.Screen>
+                <Stack.Screen name="MainCalculator" component={MainCalculator}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     );
