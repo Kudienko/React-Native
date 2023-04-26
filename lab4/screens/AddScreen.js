@@ -1,8 +1,9 @@
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {TextInput} from "react-native-web";
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { TextInput } from "react-native";
 import {Formik} from "formik"
 import AwesomeAlert from "react-native-awesome-alerts";
 import {useState} from "react";
+import Header from "../components/Header";
 
 export default function AddScreen({route}) {
     const addHandler = route.params.addHandler
@@ -16,6 +17,7 @@ export default function AddScreen({route}) {
 
     return (
         <View>
+            <Header el={"Добавление задачи"}></Header>
             <Formik initialValues={{text: '', discript: ''}} onSubmit={(values) =>{
                 if (values.text === ''){
                     handleAlert()
@@ -23,15 +25,16 @@ export default function AddScreen({route}) {
             }}>
                 {(props) => (
                     <View>
+                        <label style={styles.label}>Введите задачу...  &#8432;</label>
                         <TextInput value={props.values.text}
+                                   variant="outlined"
                                    style={styles.input}
-                                   onChangeText={props.handleChange('text')}
-                                   placeholder='Введите задачу...  &#8432;'/>
+                                   onChangeText={props.handleChange('text')}/>
+                        <label style={styles.label}>Введите крaткое описание...</label>
                         <TextInput value={props.values.discript}
                                    style={styles.input}
                                    multiline
-                                   onChangeText={props.handleChange('discript')}
-                                   placeholder='Введите кртакое описание...'/>
+                                   onChangeText={props.handleChange('discript')}/>
                         <TouchableOpacity onPress={props.handleSubmit}>
                             <View accessibility={true}  accessibilityRole='button' style={styles.button} accessible={true} >
                                 <Text style={styles.txt}>Добавить</Text>
@@ -54,15 +57,24 @@ export default function AddScreen({route}) {
 }
 
 const styles = StyleSheet.create({
+    label: {
+        width: '80%',
+        marginLeft: '10%',
+        marginTop: 35,
+        marginBottom: 0,
+        fontSize: 25,
+    },
     input: {
-        borderWidth: 1,
-        borderColor: 'silver',
+        margin: 16,
         padding: 15,
         marginTop: 15,
-        borderRadius: 5,
         marginBottom: 15,
         width: '80%',
         marginLeft: '10%',
+        fontSize: 25,
+        borderWidth:1,
+        borderRadius:5,
+        borderBottomColor:'black'
     },
     button: {
         backgroundColor: '#32CD32',

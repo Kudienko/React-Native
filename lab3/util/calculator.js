@@ -48,7 +48,8 @@ const handleEqual = (state) => {
     }
 };
 
-const Calculator = (type, value, state) => {
+// calculator function
+const calculator = (type, value, state) => {
     switch (type) {
         case "number":
             return handleNumber(value, state);
@@ -60,7 +61,7 @@ const Calculator = (type, value, state) => {
             };
         case "percentage":
             return {
-                currentValue: `${parseFloat(state.currentValue) * 0.01}`,
+                currentValue: `${parseFloat(state.currentValue) / 100}`,
             };
         case "operator":
             return {
@@ -75,4 +76,4 @@ const Calculator = (type, value, state) => {
     }
 };
 
-export default Calculator;
+export default calculator;

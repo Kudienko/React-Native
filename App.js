@@ -7,7 +7,7 @@ import AddScreen from "./lab4/screens/AddScreen";
 import WishScreen from "./lab4/screens/WishScreen";
 import HelloWorld from "./lab1/HelloWorld";
 import QuadraticEquation from "./lab2/QuadraticEquation";
-import MainCalculator from "./lab3/MainCalculator";
+import Calculator from "./lab3/Calculator";
 
 export default function App() {
     const Stack = createNativeStackNavigator();
@@ -18,10 +18,10 @@ export default function App() {
                 <Stack.Screen name="React-Native" component={MainMenu}></Stack.Screen>
                 <Stack.Screen name="QuadraticEquation" component={QuadraticEquation}></Stack.Screen>
                 <Stack.Screen name="HelloWorld" component={HelloWorld}></Stack.Screen>
-                <Stack.Screen name="WishList" component={WishList}></Stack.Screen>
-                <Stack.Screen name="AddScreen" component={AddScreen}></Stack.Screen>
-                <Stack.Screen name="WishScreen" component={WishScreen}></Stack.Screen>
-                <Stack.Screen name="MainCalculator" component={MainCalculator}></Stack.Screen>
+                <Stack.Screen name="WishList" component={WishList} options={{headerShown:false}}></Stack.Screen>
+                <Stack.Screen name="AddScreen" component={AddScreen} options={{headerShown:false}}></Stack.Screen>
+                <Stack.Screen name="WishScreen" component={WishScreen} options={{headerShown:false}}></Stack.Screen>
+                <Stack.Screen name="Calculator" component={Calculator}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     );

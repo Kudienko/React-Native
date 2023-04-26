@@ -20,7 +20,7 @@ export default function ListItem({el, deleteHandler}) {
 const styles = StyleSheet.create({
     text: {
         padding: 20,
-        textAlign: 'center',
+        textAlign: 'left',
         borderRadius: 5,
         backgroundColor: '#fafafa',
         borderWidth: 1,

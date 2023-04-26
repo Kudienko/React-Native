@@ -7,10 +7,12 @@ export default function Header({addHandler, el}) {
     return (
         <View style={styles.head}>
             <Text style={styles.text}>{el}</Text>
-            {(el === "Список дел") &&
+            {(el === "Список дел") ?
                 <TouchableOpacity onPress={() => navigation.navigate('AddScreen', {addHandler: addHandler})}>
                 <Image style={styles.add} source={require('../assets/add.png')} />
-                </TouchableOpacity> }
+                </TouchableOpacity>: <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image style={styles.back} source={require('../assets/back.png')} />
+                </TouchableOpacity>}
         </View>
 
     );
@@ -33,5 +35,10 @@ const styles = StyleSheet.create({
         right: 20,
         height: 30,
         width: 30
+    },
+    back: {
+        height: 30,
+        width: 30,
+        right: 350
     }
 });
